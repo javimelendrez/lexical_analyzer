@@ -1,11 +1,11 @@
 #include<iostream>
-#include<fstream>
+#include<fstream> //for ifstream
 #include<stdlib.h>
 #include<string.h>
-#include<ctype.h>
+#include<ctype.h> //for isalnum
  
 using namespace std;
- 
+ //array of keywords
 int isKeyword(char buffer[]){
     char keywords[32][10] = {"auto","break","case","char","const","continue","default",
                             "do","double","else","enum","extern","float","for","goto",
@@ -15,7 +15,7 @@ int isKeyword(char buffer[]){
     int i, flag = 0;
    
     for(i = 0; i < 32; ++i){
-        if(strcmp(keywords[i], buffer) == 0){
+        if(strcmp(keywords[i], buffer) == 0){ //Compare two strings
             flag = 1;
             break;
         }
@@ -47,7 +47,9 @@ int main(){
 			if (ch == separators[k])
 				cout << "Separator	=	" << ch << endl;
 		}
-       
+		if (ch == ' ') {
+			cout << "Separator	=	" << ch << endl;
+		}
         if(isalnum(ch)){
             buffer[j++] = ch;
         }
