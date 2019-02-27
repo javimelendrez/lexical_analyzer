@@ -25,22 +25,28 @@ int isKeyword(char buffer[]){
 }
  
 int main(){
-    char ch, buffer[15], operators[] = "+-*/%=";
-    ifstream fin("program.txt");
-    int i,j=0;
+    char ch, buffer[15], operators[] = "*+-=/><%";
+	char separators[] = "'(){}[],.:;!";
+    ifstream fin("Text.txt");
+    int i,j=0,k;
    
     if(!fin.is_open()){
         cout<<"error while opening the file\n";
         exit(0);
     }
-   
+	cout << "Tokens - Lexemes \n";
     while(!fin.eof()){
         ch = fin.get();
        
-        for(i = 0; i < 6; ++i){
+        for(i = 0; i < 8; ++i){
             if(ch == operators[i])
-                cout<<ch<<" is operator\n";
+				cout << "Operator	=	" << ch << endl;
         }
+
+		for (k = 0; k < 12; k++) {
+			if (ch == separators[k])
+				cout << "Separator	=	" << ch << endl;
+		}
        
         if(isalnum(ch)){
             buffer[j++] = ch;
@@ -50,14 +56,14 @@ int main(){
                 j = 0;
                                
                 if(isKeyword(buffer) == 1)
-                    cout<<buffer<<" is keyword\n";
+					cout << "Keyword	=	" << buffer << endl;
                 else
-                    cout<<buffer<<" is indentifier\n";
+					cout << "Identifier	=	" << buffer << endl;
         }
        
     }
    
     fin.close();
-   
+	system("pause");
     return 0;
 }
