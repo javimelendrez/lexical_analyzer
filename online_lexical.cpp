@@ -29,7 +29,7 @@ int main(){
 	char separators[] = "'(){}[],.:;!";
     ifstream fin("Text.txt");
     int i,j=0,k;
-   
+   //int hello = 5;
     if(!fin.is_open()){
         cout<<"error while opening the file\n";
         exit(0);
